@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  validates :name, presence: true,
-  			length: {minimum: 2, maximum: 20}
+  validates :name, presence: true, length: {minimum: 2, maximum: 20}
+
+  validates :introduction, length: {maximum: 50}
+
+  has_many :books
 end
