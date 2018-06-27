@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 before_action :authenticate_user!
-before_action :correct_user, only: [:edit, :update]
+before_action :correct_user,   only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -39,10 +39,7 @@ before_action :correct_user, only: [:edit, :update]
 
   def correct_user
     @user = User.find(params[:id])
-    if @user == current_user.id
-    else
-      redirect_to root_path
-    end
+      redirect_to root_path unless @user == current_user
   end
 
 
